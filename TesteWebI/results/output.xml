@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1 (Python 3.9.6 on win32)" generated="20210819 13:10:02.555" rpa="false" schemaversion="2">
+<suite id="s1" name="TesteWeb1" source="C:\Users\Shirlaine\Desktop\Desafio_Bemol\TesteWebI\TesteWeb1.robot">
+<kw name="Abrir Navegador" library="ResourceWeb1" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20210819 13:10:03.784" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20210819 13:10:03.783" endtime="20210819 13:10:05.714"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:03.782" endtime="20210819 13:10:05.715"/>
+</kw>
+<test id="s1-t1" name="Caso de teste A: Pesquisar CEP Existente">
+<kw name="Acessar a página home do site" library="ResourceWeb1">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210819 13:10:05.723" level="INFO">Opening url 'https://buscacepinter.correios.com.br/app/endereco/index.php'</msg>
+<status status="PASS" starttime="20210819 13:10:05.720" endtime="20210819 13:10:10.576"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Busca CEP</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210819 13:10:10.584" level="INFO">Page title is 'Busca CEP'.</msg>
+<status status="PASS" starttime="20210819 13:10:10.576" endtime="20210819 13:10:10.584"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:05.718" endtime="20210819 13:10:10.584"/>
+</kw>
+<kw name="Digitar o CEP &quot;69005-040&quot; no campo de Pesquisa" library="ResourceWeb1" sourcename="Digitar o CEP &quot;${CEP}&quot; no campo de Pesquisa">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=#endereco</arg>
+<arg>${CEP}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210819 13:10:10.588" level="INFO">Typing text '69005-040' into text field 'css=#endereco'.</msg>
+<status status="PASS" starttime="20210819 13:10:10.586" endtime="20210819 13:10:10.815"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:10.585" endtime="20210819 13:10:10.816"/>
+</kw>
+<kw name="Clicar no botão Buscar" library="ResourceWeb1">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//*[@id="btn_pesquisar"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210819 13:10:10.819" level="INFO">Clicking element 'xpath=//*[@id="btn_pesquisar"]'.</msg>
+<status status="PASS" starttime="20210819 13:10:10.819" endtime="20210819 13:10:10.901"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:10.817" endtime="20210819 13:10:10.901"/>
+</kw>
+<kw name="Conferir se o CEP &quot;69005-040&quot; foi realmente pesquisado" library="ResourceWeb1" sourcename="Conferir se o CEP &quot;${CEP}&quot; foi realmente pesquisado">
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<arg>${TIME}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20210819 13:10:10.904" endtime="20210819 13:10:10.907"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#mensagem-resultado &gt; h4</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210819 13:10:10.908" endtime="20210819 13:10:11.150"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Busca CEP</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210819 13:10:11.158" level="INFO">Page title is 'Busca CEP'.</msg>
+<status status="PASS" starttime="20210819 13:10:11.150" endtime="20210819 13:10:11.158"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//*[@id="resultado-DNEC"]/tbody/tr/td[4][contains(text(), "69005-040")]</arg>
+<arg>${CEP}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20210819 13:10:11.159" level="INFO">Verifying element 'xpath=//*[@id="resultado-DNEC"]/tbody/tr/td[4][contains(text(), "69005-040")]' contains exact text '69005-040'.</msg>
+<status status="PASS" starttime="20210819 13:10:11.158" endtime="20210819 13:10:11.197"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:10.902" endtime="20210819 13:10:11.197"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:05.715" endtime="20210819 13:10:11.198"/>
+</test>
+<test id="s1-t2" name="Caso de teste B: Pesquisar por Lojas Bemol">
+<kw name="Acessar a página home do site" library="ResourceWeb1">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20210819 13:10:11.202" level="INFO">Opening url 'https://buscacepinter.correios.com.br/app/endereco/index.php'</msg>
+<status status="PASS" starttime="20210819 13:10:11.202" endtime="20210819 13:10:11.717"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Busca CEP</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210819 13:10:11.727" level="INFO">Page title is 'Busca CEP'.</msg>
+<status status="PASS" starttime="20210819 13:10:11.718" endtime="20210819 13:10:11.727"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:11.201" endtime="20210819 13:10:11.728"/>
+</kw>
+<kw name="Digitar na Pesquisa &quot;Lojas Bemol&quot;" library="ResourceWeb1" sourcename="Digitar na Pesquisa &quot;${BEMOL}&quot;">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>css=#endereco</arg>
+<arg>${BEMOL}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20210819 13:10:11.731" level="INFO">Typing text 'Lojas Bemol' into text field 'css=#endereco'.</msg>
+<status status="PASS" starttime="20210819 13:10:11.730" endtime="20210819 13:10:11.894"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:11.729" endtime="20210819 13:10:11.895"/>
+</kw>
+<kw name="Clicar no botão Buscar" library="ResourceWeb1">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//*[@id="btn_pesquisar"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210819 13:10:11.898" level="INFO">Clicking element 'xpath=//*[@id="btn_pesquisar"]'.</msg>
+<status status="PASS" starttime="20210819 13:10:11.897" endtime="20210819 13:10:11.976"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:11.896" endtime="20210819 13:10:11.977"/>
+</kw>
+<kw name="Conferir se &quot;Lojas Bemol&quot; foi realmente pesquisado" library="ResourceWeb1" sourcename="Conferir se &quot;${BEMOL}&quot; foi realmente pesquisado">
+<kw name="Set Selenium Implicit Wait" library="SeleniumLibrary">
+<arg>${TIME}</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20210819 13:10:11.980" endtime="20210819 13:10:11.983"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>css=#mensagem-resultado &gt; h4</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20210819 13:10:11.983" endtime="20210819 13:10:12.236"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Busca CEP</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20210819 13:10:12.236" level="INFO">Page title is 'Busca CEP'.</msg>
+<status status="PASS" starttime="20210819 13:10:12.236" endtime="20210819 13:10:12.236"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=//*[@id="resultado-DNEC"]/tbody/tr/td[1]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20210819 13:10:12.236" level="INFO">Clicking element 'xpath=//*[@id="resultado-DNEC"]/tbody/tr/td[1]/a'.</msg>
+<status status="PASS" starttime="20210819 13:10:12.236" endtime="20210819 13:10:12.314"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=//*[@id="detalhes-cep-grande-usuario"][contains(text(), "Lojas Bemol")]</arg>
+<arg>${BEMOL}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20210819 13:10:12.316" level="INFO">Verifying element 'xpath=//*[@id="detalhes-cep-grande-usuario"][contains(text(), "Lojas Bemol")]' contains exact text 'Lojas Bemol'.</msg>
+<status status="PASS" starttime="20210819 13:10:12.315" endtime="20210819 13:10:12.543"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:11.978" endtime="20210819 13:10:12.544"/>
+</kw>
+<status status="PASS" starttime="20210819 13:10:11.200" endtime="20210819 13:10:12.544"/>
+</test>
+<status status="PASS" starttime="20210819 13:10:02.555" endtime="20210819 13:10:12.547"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="TesteWeb1">TesteWeb1</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
